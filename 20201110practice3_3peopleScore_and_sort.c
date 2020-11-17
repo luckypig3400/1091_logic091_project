@@ -43,7 +43,7 @@ int main()
     }
 
     for (searchID = 0; searchID < 3; searchID++){//輸出全部結果(未排序)
-        printf("第%d位同學的成績為：國文%0f分，英文%0f分，數學%0f分\t總分:%0f分\t平均:%2f分 \n", searchID + 1, score[searchID][0], score[searchID][1], score[searchID][2], score[searchID][3], score[searchID][4]);
+        printf("第%d位同學的成績為：國文%.0f分，英文%.0f分，數學%.0f分\t總分:%.0f分\t平均:%.2f分 \n", searchID + 1, score[searchID][0], score[searchID][1], score[searchID][2], score[searchID][3], score[searchID][4]);
     }
 
     return 0;
