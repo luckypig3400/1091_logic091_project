@@ -1,3 +1,4 @@
+//用Dev C++ 編譯出來的exe執行檔才可以正常顯示中文字
 #include <stdio.h>
 #include <string.h>
 
@@ -43,8 +44,13 @@ int main()
         gets(inputCache);
         strcpy(phone[inputCount], inputCache); //複製string
 
-        printf("%s\t", name[inputCount]);
-        printf("%s\n", phone[inputCount]);
+        for (int i = 0; i < 5; i++)
+    	{
+        	if (name[i][0] != '\0')//如果首個字元不是空的則輸出
+        	{
+            	printf("%s\t%s\n", name[i], phone[i]);
+	        }
+    	}
 
         printf("是否繼續輸入(y/n):");
         gets(continueInput);
@@ -54,14 +60,6 @@ int main()
         printf("===========================\n");
 
         inputCount++;
-    }
-
-    for (int i = 0; i < 5; i++)
-    {
-        if (name[i][0] != '\0')//如果首個字元不是空的則輸出
-        {
-            printf("%s\t%s\n", name[i], phone[i]);
-        }
     }
 
     return 0;
