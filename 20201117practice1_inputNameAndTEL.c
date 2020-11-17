@@ -9,6 +9,16 @@ int main()
     char inputCache[64];
     char continueInput[3];
 
+    for (int i = 0; i < 5; i++) //初始化字元陣列(清空)
+    {
+        for (int j = 0; j < 64; j++)
+        {
+            name[i][j] = '\0';
+            phone[i][j] = '\0';
+            inputCache[j] = '\0';
+        }
+    }
+
     // 假設宣告name[3][6]則:
     // 0 1 2 3 4 5
     // □ □ □ □ □ □ name[0][]
@@ -38,14 +48,18 @@ int main()
 
         printf("是否繼續輸入(y/n):");
         gets(continueInput);
-        if(continueInput[0] == 'n' || continueInput[0] == 'N') break;
+        if (continueInput[0] == 'n' || continueInput[0] == 'N')
+            break;
         // else do nothing(默認繼續輸入)
         printf("===========================\n");
 
         inputCount++;
     }
 
-    
+    for (int i = 0; i < 5; i++)
+    {
+        printf("%s\t%s\n", name[i], phone[i]);
+    }
 
     return 0;
 }
