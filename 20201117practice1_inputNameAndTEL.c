@@ -58,7 +58,10 @@ int main()
 
     for (int i = 0; i < 5; i++)
     {
-        printf("%s\t%s\n", name[i], phone[i]);
+        if (name[i][0] != '\0')//如果首個字元不是空的則輸出
+        {
+            printf("%s\t%s\n", name[i], phone[i]);
+        }
     }
 
     return 0;
