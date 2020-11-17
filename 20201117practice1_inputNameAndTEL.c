@@ -1,4 +1,4 @@
-//ç”¨Dev C++ ç·¨è­¯å‡ºä¾†çš„exeåŸ·è¡Œæª”æ‰å¯ä»¥æ­£å¸¸é¡¯ç¤ºä¸­æ–‡å­—
+//¥ÎDev C++ ½sÄ¶¥X¨Óªºexe°õ¦æÀÉ¤~¥i¥H¥¿±`Åã¥Ü¤¤¤å¦r
 #include <stdio.h>
 #include <string.h>
 
@@ -10,7 +10,7 @@ int main()
     char inputCache[64];
     char continueInput[3];
 
-    for (int i = 0; i < 5; i++) //åˆå§‹åŒ–å­—å…ƒé™£åˆ—(æ¸…ç©º)
+    for (int i = 0; i < 5; i++) //ªì©l¤Æ¦r¤¸°}¦C(²MªÅ)
     {
         for (int j = 0; j < 64; j++)
         {
@@ -20,43 +20,43 @@ int main()
         }
     }
 
-    // å‡è¨­å®£å‘Šname[3][6]å‰‡:
+    // °²³]«Å§iname[3][6]«h:
     // 0 1 2 3 4 5
-    // â–¡ â–¡ â–¡ â–¡ â–¡ â–¡ name[0][]
-    // â–¡ â–¡ â–¡ â–¡ â–¡ â–¡ name[1][]
-    // â–¡ â–¡ â–¡ â–¡ â–¡ â–¡ name[2][]
+    // ¡¼ ¡¼ ¡¼ ¡¼ ¡¼ ¡¼ name[0][]
+    // ¡¼ ¡¼ ¡¼ ¡¼ ¡¼ ¡¼ name[1][]
+    // ¡¼ ¡¼ ¡¼ ¡¼ ¡¼ ¡¼ name[2][]
 
-    // â–¡ â–¡ â–¡ â–¡ â–¡ â–¡ inputCache
-    // gets()ç²å–å­—ä¸² å¯ä»¥æŠŠè¼¸å…¥çš„å­—ä¸²è½‰å­˜åˆ°å­—å…ƒé™£åˆ—å…§(åŒ…å«ç©ºç™½)
+    // ¡¼ ¡¼ ¡¼ ¡¼ ¡¼ ¡¼ inputCache
+    // gets()Àò¨ú¦r¦ê ¥i¥H§â¿é¤Jªº¦r¦êÂà¦s¨ì¦r¤¸°}¦C¤º(¥]§tªÅ¥Õ)
 
-    // ä½¿ç”¨strcpy(name[0],inputCache)
-    // å¯ä»¥æŠŠinputCacheå­—ä¸²(æˆ–è€…èªªæ˜¯inputCacheçš„æ¯å€‹å­—å…ƒ) è¤‡è£½åˆ° name[0]
+    // ¨Ï¥Îstrcpy(name[0],inputCache)
+    // ¥i¥H§âinputCache¦r¦ê(©ÎªÌ»¡¬OinputCacheªº¨C­Ó¦r¤¸) ½Æ»s¨ì name[0]
 
     int inputCount = 0;
 
     while (inputCount < 5)
-    { //ä¸å¯è¶…éå­—å…ƒé™£åˆ—ç¯„åœ
-        printf("è«‹è¼¸å…¥å§“åï¼š");
+    { //¤£¥i¶W¹L¦r¤¸°}¦C½d³ò
+        printf("½Ğ¿é¤J©m¦W¡G");
         gets(inputCache);
-        strcpy(name[inputCount], inputCache); //è¤‡è£½string
+        strcpy(name[inputCount], inputCache); //½Æ»sstring
 
-        printf("è«‹è¼¸å…¥é›»è©±ï¼š");
+        printf("½Ğ¿é¤J¹q¸Ü¡G");
         gets(inputCache);
-        strcpy(phone[inputCount], inputCache); //è¤‡è£½string
+        strcpy(phone[inputCount], inputCache); //½Æ»sstring
 
         for (int i = 0; i < 5; i++)
     	{
-        	if (name[i][0] != '\0')//å¦‚æœé¦–å€‹å­—å…ƒä¸æ˜¯ç©ºçš„å‰‡è¼¸å‡º
+        	if (name[i][0] != '\0')//¦pªG­º­Ó¦r¤¸¤£¬OªÅªº«h¿é¥X
         	{
             	printf("%s\t%s\n", name[i], phone[i]);
 	        }
     	}
 
-        printf("æ˜¯å¦ç¹¼çºŒè¼¸å…¥(y/n):");
+        printf("¬O§_Ä~Äò¿é¤J(y/n):");
         gets(continueInput);
         if (continueInput[0] == 'n' || continueInput[0] == 'N')
             break;
-        // else do nothing(é»˜èªç¹¼çºŒè¼¸å…¥)
+        // else do nothing(Àq»{Ä~Äò¿é¤J)
         printf("===========================\n");
 
         inputCount++;
