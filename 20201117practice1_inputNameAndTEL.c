@@ -8,7 +8,7 @@ int main()
     char name[5][64];
     char phone[5][64];
     char inputCache[64];
-    char continueInput[3];
+    char continueInput[3] = "no";
 
     for (int i = 0; i < 5; i++) //初始化字元陣列(清空)
     {
@@ -60,6 +60,10 @@ int main()
         printf("===========================\n");
 
         inputCount++;
+        int i;
+
+        //to-do:要持續輸入直到使用者輸入n或N
+        //to-do:若輸入到第六筆或第七筆可以擠掉最早輸入的值
     }
 
     return 0;
