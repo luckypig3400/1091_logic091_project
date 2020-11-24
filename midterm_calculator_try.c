@@ -25,6 +25,7 @@ int main()
     {
         if (inputArray[i] != '=' || inputArray[i] != '+' || inputArray[i] != '-' || inputArray[i] != '*' || inputArray[i] != '/')
             intArray[i] = inputArray[i] - '0';
+        else intArray[i] = -1;//stand for operator
         //https://stackoverflow.com/questions/5029840/convert-char-to-int-in-c-and-c
     }
 
