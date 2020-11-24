@@ -65,12 +65,28 @@ int main()
         }
     }
 
-    //TODO 按照原始ID搬移剩餘的成績
+    //按照原始ID搬移剩餘成績的區塊(在完成此區塊前，只有排序總分並搬移原始儲存格ID)
+    int temp[3][6];
+    for (int i = 0; i < 3; i++)
+    {
+        for(int j=0;j<6;j++){
+            temp[i][j] = score[i][j];//完整複製一次score[][]
+        }
+    }
+    for (int i = 0; i < 3; i++)
+    {
+        int originalID = (int)score[i][5];
+        score[i][0] = temp[originalID][0];
+        score[i][1] = temp[originalID][1];
+        score[i][2] = temp[originalID][2];
+        score[i][4] = temp[originalID][4];
+    }
+    //按照原始ID搬移剩餘成績的區塊
 
     printf("======已按照成績排序======\n");
     for (int searchID = 0; searchID < 3; searchID++)
     {
-        printf("(原始ID:%0f)第%d位同學的成績為：國文%.0f分，英文%.0f分，數學%.0f分\t總分:%.0f分\t平均:%.2f分 \n", score[searchID][5], searchID + 1, score[searchID][0], score[searchID][1], score[searchID][2], score[searchID][3], score[searchID][4]);
+        printf("(原始ID:%.0f)第%d位同學的成績為：國文%.0f分，英文%.0f分，數學%.0f分\t總分:%.0f分\t平均:%.2f分 \n", score[searchID][5], searchID + 1, score[searchID][0], score[searchID][1], score[searchID][2], score[searchID][3], score[searchID][4]);
     }
 
     return 0;
