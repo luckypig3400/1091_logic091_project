@@ -19,7 +19,7 @@ int main()
     for (int i = 0; i < arraySize; i++)
         inputArray[i] = '\0'; //inital char Array
 
-    inputChar = getche();
+    inputChar = getche(); //接取輸入字元並顯示出來
     while (inputChar != '=' && inputCount != arraySize)
     {
         if (inputChar == '+' || inputChar == '-' || inputChar == '*' || inputChar == '/')
@@ -54,19 +54,26 @@ int main()
                 unprocessOperator = inputChar; //更新unprocessOperator
             }
         }
-        else
+        else //輸入非運算子 處理數字位數的部分
         {
             inputNum = inputChar - '0';
             if (alreadyInputFirstOperator == 'n') //第一次輸入，尚未輸入任何運算子
-                result = result * 10 + inputNum;
+            {
+                //直接乘10就可以處理多位數問題了 by 鑫哥
+                result = result * 10 + inputNum; //尚未輸入任何運算子，將數字直接儲存到結果
+            }
             else
-                caculateCache = caculateCache * 10 + inputNum; //直接乘10就可以處理多位數問題了 by 鑫哥
+            {
+                //直接乘10就可以處理多位數問題了 by 鑫哥
+                caculateCache = caculateCache * 10 + inputNum; //已經輸入過運算子，接下來輸入的數字都要等待運算
+            }
         }
+
         inputCount += 1;
         inputChar = getche();
     }
 
-    switch (unprocessOperator)
+    switch (unprocessOperator) //輸入等於後處理尚未運算的數值
     {
     case '+':
         result += caculateCache;
@@ -84,9 +91,9 @@ int main()
         break;
     }
 
-    printf("\nunprocessOperator:%c", unprocessOperator);
-    printf("\nfinal result:%d", result);
-    printf("\nlast caculateCache:%d", caculateCache);
+    printf("\nunprocessOperator:%c", unprocessOperator); //debug Info
+    printf("\nfinal result:%d", result);                 //debug Info
+    printf("\nlast caculateCache:%d", caculateCache);    //debug Info
 
     return 0;
 }
