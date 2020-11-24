@@ -11,6 +11,8 @@ int main()
     int inputNum = 0;
     int result = 0;
     int caculateCache = 0;
+    char lastInputOperator = '\0';
+    char firstInputOperator = 'y';
 
     printf("請輸入一四則運算式:");
 
@@ -25,29 +27,60 @@ int main()
         case '+':
             result += caculateCache;
             caculateCache = 0;
+            lastInputOperator = '+';
+            firstInputOperator = 'n';
             break;
         case '-':
             result -= caculateCache;
             caculateCache = 0;
+            lastInputOperator = '-';
+            firstInputOperator = 'n';
             break;
         case '*':
             result *= caculateCache;
             caculateCache = 0;
+            lastInputOperator = '*';
+            firstInputOperator = 'n';
             break;
         case '/':
             result /= caculateCache;
             caculateCache = 0;
+            lastInputOperator = '/';
+            firstInputOperator = 'n';
             break;
         default:
             inputNum = inputChar - '0';
-            caculateCache = caculateCache * 10  + inputNum;//直接乘10就可以處理多位數問題了 by 鑫哥
+            if (firstInputOperator == 'y')
+                result = result * 10 + inputNum;
+            else
+                caculateCache = caculateCache * 10 + inputNum; //直接乘10就可以處理多位數問題了 by 鑫哥
             break;
         }
         inputCount += 1;
         inputChar = getche();
     }
 
-    printf("%d", result);
+    switch (lastInputOperator)
+    {
+    case '+':
+        result += caculateCache;
+        break;
+    case '-':
+        result -= caculateCache;
+        break;
+    case '*':
+        result *= caculateCache;
+        break;
+    case '/':
+        result /= caculateCache;
+        break;
+    default:
+        break;
+    }
+
+    printf("\nlastInputOperator:%c", lastInputOperator);
+    printf("\nfinal result:%d", result);
+    printf("\nlast caculateCache:%d", caculateCache);
 
     return 0;
 }
