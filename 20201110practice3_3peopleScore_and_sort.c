@@ -54,11 +54,11 @@ int main()
         {
             if (score[i][3] < score[j][3]) //[][3]第三格為總分
             {
-                int swap = score[i][3];
+                float swap = score[i][3];
                 score[i][3] = score[j][3];
                 score[j][3] = swap;
 
-                int orgID = score[i][5]; //總分排序完後搬移原始ID儲存格
+                float orgID = score[i][5]; //總分排序完後搬移原始ID儲存格
                 score[i][5] = score[j][5];
                 score[j][5] = orgID;
             }
@@ -70,7 +70,7 @@ int main()
     printf("======已按照成績排序======\n");
     for (int searchID = 0; searchID < 3; searchID++)
     {
-        printf("(原始ID:%d)第%d位同學的成績為：國文%.0f分，英文%.0f分，數學%.0f分\t總分:%.0f分\t平均:%.2f分 \n", score[searchID][5], searchID + 1, score[searchID][0], score[searchID][1], score[searchID][2], score[searchID][3], score[searchID][4]);
+        printf("(原始ID:%0f)第%d位同學的成績為：國文%.0f分，英文%.0f分，數學%.0f分\t總分:%.0f分\t平均:%.2f分 \n", score[searchID][5], searchID + 1, score[searchID][0], score[searchID][1], score[searchID][2], score[searchID][3], score[searchID][4]);
     }
 
     return 0;
