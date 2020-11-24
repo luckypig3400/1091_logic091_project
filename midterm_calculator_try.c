@@ -91,9 +91,7 @@ int main()
         break;
     }
 
-    printf("\nunprocessOperator:%c", unprocessOperator); //debug Info
-    printf("\nfinal result:%d", result);                 //debug Info
-    printf("\nlast caculateCache:%d", caculateCache);    //debug Info
+    printf("%d", result); //output final result
 
     return 0;
 }
