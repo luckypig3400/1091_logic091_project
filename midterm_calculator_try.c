@@ -11,7 +11,7 @@ int main()
     int inputNum = 0;
     int result = 0;
     int caculateCache = 0;
-    char lastInputOperator = '\0';
+    char unprocessOperator = '\0';
     char alreadyInputFirstOperator = 'n';
 
     printf("請輸入一四則運算式:");
@@ -22,23 +22,51 @@ int main()
     inputChar = getche();
     while (inputChar != '=' && inputCount != arraySize)
     {
-
-        inputNum = inputChar - '0';
-        if (alreadyInputFirstOperator == 'n') //第一次輸入，尚未輸入任何運算子
-            result = result * 10 + inputNum;
-        else
-            caculateCache = caculateCache * 10 + inputNum; //直接乘10就可以處理多位數問題了 by 鑫哥
-
         if (inputChar == '+' || inputChar == '-' || inputChar == '*' || inputChar == '/')
         {
-            alreadyInputFirstOperator = 'y';
-            lastInputOperator = inputChar;
+            if (alreadyInputFirstOperator == 'n')
+            { //第一次接到運算符號先不運算
+                alreadyInputFirstOperator = 'y';
+                unprocessOperator = inputChar;
+            }
+            else
+            {
+                switch (unprocessOperator)
+                {
+                case '+':
+                    result += caculateCache;
+                    break;
+                case '-':
+                    result -= caculateCache;
+                    break;
+                case '*':
+                    result *= caculateCache;
+                    break;
+                case '/':
+                    result /= caculateCache;
+                    break;
+                default:
+                    //do nothing
+                    break;
+                }
+
+                caculateCache = 0;             //finish calculate set cache=0
+                unprocessOperator = inputChar; //更新unprocessOperator
+            }
+        }
+        else
+        {
+            inputNum = inputChar - '0';
+            if (alreadyInputFirstOperator == 'n') //第一次輸入，尚未輸入任何運算子
+                result = result * 10 + inputNum;
+            else
+                caculateCache = caculateCache * 10 + inputNum; //直接乘10就可以處理多位數問題了 by 鑫哥
         }
         inputCount += 1;
         inputChar = getche();
     }
 
-    switch (lastInputOperator)
+    switch (unprocessOperator)
     {
     case '+':
         result += caculateCache;
@@ -56,7 +84,7 @@ int main()
         break;
     }
 
-    printf("\nlastInputOperator:%c", lastInputOperator);
+    printf("\nunprocessOperator:%c", unprocessOperator);
     printf("\nfinal result:%d", result);
     printf("\nlast caculateCache:%d", caculateCache);
 
