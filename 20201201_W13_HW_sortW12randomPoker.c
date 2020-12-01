@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void outputPoker(int []);
+void outputPoker(int[]);
 
 int main()
 {
@@ -15,7 +15,7 @@ int main()
         originalPoker[i] = i + 1;
         randomPoker[i] = i + 1;
         //1 ~ 52
-        sortedPoker[i] = -1;//initalize sortedPoker
+        sortedPoker[i] = -1; //initalize sortedPoker
     }
 
     srand(time(NULL));
@@ -26,6 +26,9 @@ int main()
         randomPoker[i] = randomPoker[j];
         randomPoker[j] = swap;
     }
+
+    printf("正常順序的撲克牌:\n");
+    outputPoker(originalPoker);
 
     printf("\n打亂順序的撲克牌:\n");
     outputPoker(randomPoker);
@@ -38,35 +41,95 @@ int main()
     return 0;
 }
 
-void outputPoker(int in_Poker[]){
-    for (int i = 0; i < 52; i++) //輸出原始撲克牌
+void outputPoker(int in_Poker[])
+{
+    for (int i = 0; i < 52; i++) //輸出撲克牌
     {
         if (i % 13 == 0 && i != 0)
             printf("\n"); //每13張分一組
         if (in_Poker[i] <= 13)
         {
-            printf("♠%d ", in_Poker[i]);
+            switch (in_Poker[i] % 13)
+            {
+            case 0:
+                printf("♠K ");
+                break;
+            case 1:
+                printf("♠A ");
+                break;
+            case 11:
+                printf("♠J ");
+                break;
+            case 12:
+                printf("♠Q ");
+                break;
+            default:
+                printf("♠%d ", in_Poker[i]);
+                break;
+            }
         }
         else if (in_Poker[i] <= 26)
         {
-            if (in_Poker[i] % 13 == 0)
-                printf("♥%d ", 13);
-            else
+            switch (in_Poker[i] % 13)
+            {
+            case 0:
+                printf("♥K ");
+                break;
+            case 1:
+                printf("♥A ");
+                break;
+            case 11:
+                printf("♥J ");
+                break;
+            case 12:
+                printf("♥Q ");
+                break;
+            default:
                 printf("♥%d ", in_Poker[i] % 13);
+                break;
+            }
         }
         else if (in_Poker[i] <= 39)
         {
-            if (in_Poker[i] % 13 == 0)
-                printf("♦%d ", 13);
-            else
+            switch (in_Poker[i] % 13)
+            {
+            case 0:
+                printf("♦K ");
+                break;
+            case 1:
+                printf("♦A ");
+                break;
+            case 11:
+                printf("♦J ");
+                break;
+            case 12:
+                printf("♦Q ");
+                break;
+            default:
                 printf("♦%d ", in_Poker[i] % 13);
+                break;
+            }
         }
         else if (in_Poker[i] <= 52)
         {
-            if (in_Poker[i] % 13 == 0)
-                printf("♣%d ", 13);
-            else
+            switch (in_Poker[i] % 13)
+            {
+            case 0:
+                printf("♣K ");
+                break;
+            case 1:
+                printf("♣A ");
+                break;
+            case 11:
+                printf("♣J ");
+                break;
+            case 12:
+                printf("♣Q ");
+                break;
+            default:
                 printf("♣%d ", in_Poker[i] % 13);
+                break;
+            }
         }
     }
 }
