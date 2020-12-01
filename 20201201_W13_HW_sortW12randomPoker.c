@@ -1,0 +1,58 @@
+#include <stdio.h>
+
+int main()
+{
+
+    int originalPoker[52];
+    int randomPoker[52];
+    for (int i = 0; i < 52; i++) //產生原始順序的撲克牌
+    {
+        originalPoker[i] = i + 1;
+        randomPoker[i] = i + 1;
+        //1 ~ 52
+    }
+
+    for (int i = 0; i < 52; i++) //產生打亂順序的撲克牌
+    {
+        int j = rand() % 52;
+        int swap = randomPoker[i];
+        randomPoker[i] = randomPoker[j];
+        randomPoker[j] = swap;
+    }
+
+    printf("\n打亂順序的撲克牌:\n");
+    for (int i = 0; i < 52; i++) //輸出原始撲克牌
+    {
+        if (i % 13 == 0 && i != 0)
+            printf("\n"); //每13張分一組
+        if (randomPoker[i] <= 13)
+        {
+            printf("♠%d ", randomPoker[i]);
+        }
+        else if (randomPoker[i] <= 26)
+        {
+            if (randomPoker[i] % 13 == 0)
+                printf("♥%d ", 13);
+            else
+                printf("♥%d ", randomPoker[i] % 13);
+        }
+        else if (randomPoker[i] <= 39)
+        {
+            if (randomPoker[i] % 13 == 0)
+                printf("♦%d ", 13);
+            else
+                printf("♦%d ", randomPoker[i] % 13);
+        }
+        else if (randomPoker[i] <= 52)
+        {
+            if (randomPoker[i] % 13 == 0)
+                printf("♣%d ", 13);
+            else
+                printf("♣%d ", randomPoker[i] % 13);
+        }
+    }
+
+    //printf("♠ ♥ ♦ ♣\n");
+
+    return 0;
+}
