@@ -5,11 +5,13 @@ int main()
 
     int originalPoker[52];
     int randomPoker[52];
+    int sortedPoker[52];
     for (int i = 0; i < 52; i++) //產生原始順序的撲克牌
     {
         originalPoker[i] = i + 1;
         randomPoker[i] = i + 1;
         //1 ~ 52
+        sortedPoker[i] = -1;//initalize sortedPoker
     }
 
     for (int i = 0; i < 52; i++) //產生打亂順序的撲克牌
@@ -51,8 +53,6 @@ int main()
                 printf("♣%d ", randomPoker[i] % 13);
         }
     }
-
-    //printf("♠ ♥ ♦ ♣\n");
 
     return 0;
 }
