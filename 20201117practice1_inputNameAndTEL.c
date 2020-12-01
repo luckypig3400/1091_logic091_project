@@ -45,12 +45,12 @@ int main()
         strcpy(phone[inputCount], inputCache); //複製string
 
         for (int i = 0; i < 5; i++)
-    	{
-        	if (name[i][0] != '\0')//如果首個字元不是空的則輸出
-        	{
-            	printf("%s\t%s\n", name[i], phone[i]);
-	        }
-    	}
+        {
+            if (name[i][0] != '\0') //如果首個字元不是空的則輸出
+            {
+                printf("%s\t%s\n", name[i], phone[i]);
+            }
+        }
 
         printf("是否繼續輸入(y/n):");
         gets(continueInput);
@@ -60,10 +60,30 @@ int main()
         printf("===========================\n");
 
         inputCount++;
-        int i;
 
-        //to-do:要持續輸入直到使用者輸入n或N
-        //to-do:若輸入到第六筆或第七筆可以擠掉最早輸入的值
+        if (inputCount == 5)
+        { //已經把儲存格輸入滿了仍繼續輸入
+            inputCount = 4;//不讓輸入值超過陣列範圍
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 64; j++)
+                {
+                    if (i == 4)
+                    {//清空最後一列
+                        name[i][j] = '\0';
+                        name[i][j] = '\0';
+                    }
+                    else
+                    {//資料全部往上搬移一格
+                        name[i][j] = name[i + 1][j];
+                        phone[i][j] = phone[i + 1][j];
+                    }
+                }
+            }
+        }
+
+        //finish:要持續輸入直到使用者輸入n或N
+        //finish:若輸入到第六筆或第七筆可以擠掉最早輸入的值
     }
 
     return 0;
