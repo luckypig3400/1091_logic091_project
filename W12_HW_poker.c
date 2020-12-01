@@ -19,15 +19,24 @@ int main()
         }
         else if (originalPoker[i] <= 26)
         {
-            printf("♥%d ", originalPoker[i] % 13);
+            if (originalPoker[i] % 13 == 0)
+                printf("♥%d ", 13);
+            else
+                printf("♥%d ", originalPoker[i] % 13);
         }
         else if (originalPoker[i] <= 39)
         {
-            printf("♦%d ", originalPoker[i] % 13);
+            if (originalPoker[i] % 13 == 0)
+                printf("♦%d ", 13);
+            else
+                printf("♦%d ", originalPoker[i] % 13);
         }
         else if (originalPoker[i] <= 52)
         {
-            printf("♣%d ", originalPoker[i] % 13);
+            if (originalPoker[i] % 13 == 0)
+                printf("♣%d ", 13);
+            else
+                printf("♣%d ", originalPoker[i] % 13);
         }
     }
 
