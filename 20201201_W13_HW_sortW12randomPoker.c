@@ -1,4 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void outputPoker(int []);
 
 int main()
 {
@@ -14,6 +18,7 @@ int main()
         sortedPoker[i] = -1;//initalize sortedPoker
     }
 
+    srand(time(NULL));
     for (int i = 0; i < 52; i++) //產生打亂順序的撲克牌
     {
         int j = rand() % 52;
@@ -23,36 +28,40 @@ int main()
     }
 
     printf("\n打亂順序的撲克牌:\n");
+    outputPoker(randomPoker);
+
+    return 0;
+}
+
+void outputPoker(int in_Poker[]){
     for (int i = 0; i < 52; i++) //輸出原始撲克牌
     {
         if (i % 13 == 0 && i != 0)
             printf("\n"); //每13張分一組
-        if (randomPoker[i] <= 13)
+        if (in_Poker[i] <= 13)
         {
-            printf("♠%d ", randomPoker[i]);
+            printf("♠%d ", in_Poker[i]);
         }
-        else if (randomPoker[i] <= 26)
+        else if (in_Poker[i] <= 26)
         {
-            if (randomPoker[i] % 13 == 0)
+            if (in_Poker[i] % 13 == 0)
                 printf("♥%d ", 13);
             else
-                printf("♥%d ", randomPoker[i] % 13);
+                printf("♥%d ", in_Poker[i] % 13);
         }
-        else if (randomPoker[i] <= 39)
+        else if (in_Poker[i] <= 39)
         {
-            if (randomPoker[i] % 13 == 0)
+            if (in_Poker[i] % 13 == 0)
                 printf("♦%d ", 13);
             else
-                printf("♦%d ", randomPoker[i] % 13);
+                printf("♦%d ", in_Poker[i] % 13);
         }
-        else if (randomPoker[i] <= 52)
+        else if (in_Poker[i] <= 52)
         {
-            if (randomPoker[i] % 13 == 0)
+            if (in_Poker[i] % 13 == 0)
                 printf("♣%d ", 13);
             else
-                printf("♣%d ", randomPoker[i] % 13);
+                printf("♣%d ", in_Poker[i] % 13);
         }
     }
-
-    return 0;
 }
