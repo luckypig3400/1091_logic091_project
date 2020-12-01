@@ -30,6 +30,11 @@ int main()
     printf("\n打亂順序的撲克牌:\n");
     outputPoker(randomPoker);
 
+    // TODO 排序打亂的撲克牌
+
+    printf("\n排序後的撲克牌:\n");
+    outputPoker(sortedPoker);
+
     return 0;
 }
 
