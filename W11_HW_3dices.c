@@ -21,7 +21,11 @@ int main()
         totalDiceNumber += dice[i];
     }
     printf("\n=========================\n");
-    printf("總和為%d", totalDiceNumber);
+    printf("結果為%d", totalDiceNumber);
+
+    //TODO:判斷其點數。其基本規則
+    //TODO:由小到大排列
+    //TODO:按’r’或’R’可重擲，按’q’或’Q’結束
 
     return 0;
 }
