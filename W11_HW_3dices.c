@@ -2,11 +2,23 @@
 #include <stdlib.h> //srand, rand
 #include <time.h>   // time
 
+int randomNumber, totalDiceNumber = 0;
+int dice[3];
+void tossDice();
+
 int main()
 {
 
-    int randomNumber, totalDiceNumber = 0;
-    int dice[3];
+    tossDice();
+
+    //TODO:判斷其點數。其基本規則
+    //TODO:由小到大排列
+    //TODO:按’r’或’R’可重擲，按’q’或’Q’結束
+
+    return 0;
+}
+
+void tossDice(){
     //initialize random seed
     srand(time(NULL)); //用時間將亂數表先打亂
 
@@ -21,11 +33,4 @@ int main()
         totalDiceNumber += dice[i];
     }
     printf("\n=========================\n");
-    printf("結果為%d", totalDiceNumber);
-
-    //TODO:判斷其點數。其基本規則
-    //TODO:由小到大排列
-    //TODO:按’r’或’R’可重擲，按’q’或’Q’結束
-
-    return 0;
 }
