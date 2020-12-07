@@ -10,7 +10,7 @@ int main()
 {
 
     char in_char = 'r';
-    while (in_char != 'q' || "Q")
+    while (1 == 1)
     {
         if (in_char == 'r' || in_char == 'R')
         {
@@ -21,6 +21,8 @@ int main()
 
         printf("輸入R再投擲一次，或是輸入Q離開:");
         scanf("%c", &in_char);
+        if (in_char == 'q' || in_char == 'Q')
+            break;
     }
 
     return 0;
