@@ -9,16 +9,25 @@ void tossDice();
 int main()
 {
 
-    tossDice();
+    char in_char = 'r';
+    while (in_char != 'q' || "Q")
+    {
+        if (in_char == 'r' || in_char == 'R')
+        {
+            tossDice();
+            //TODO:判斷其點數。其基本規則
+            //TODO:由小到大排列
+        }
 
-    //TODO:判斷其點數。其基本規則
-    //TODO:由小到大排列
-    //TODO:按’r’或’R’可重擲，按’q’或’Q’結束
+        printf("輸入R再投擲一次，或是輸入Q離開:");
+        scanf("%c", &in_char);
+    }
 
     return 0;
 }
 
-void tossDice(){
+void tossDice()
+{
     //initialize random seed
     srand(time(NULL)); //用時間將亂數表先打亂
 
