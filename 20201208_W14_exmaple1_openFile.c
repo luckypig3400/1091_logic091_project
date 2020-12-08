@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+
+//解決CMD顯示出現亂碼:https://blog.darkthread.net/blog/command-prompt-codepage/
+
 int main()
 {
     FILE *fp;                      /*宣告一個指標形態的變數，變數名稱:pFile */
