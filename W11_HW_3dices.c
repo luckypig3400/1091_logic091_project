@@ -82,15 +82,15 @@ void judgeDicePoint()
     {
         printf("順子");
     }
-    else if (dice[0] == dice[1] != dice[2])
+    else if (dice[0] == dice[1] && dice[1] != dice[2])
     {
         printf("%d點", dice[2]);
     }
-    else if (dice[0] != dice[1] == dice[2])
+    else if (dice[0] != dice[1] && dice[1] == dice[2])
     {
         printf("%d點", dice[0]);
     }
-    else if (dice[0] == dice[1] == dice[2])
+    else if (dice[0] == dice[1] && dice[1] == dice[2])
     {
         printf("豹子");
     }
