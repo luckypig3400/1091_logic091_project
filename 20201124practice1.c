@@ -34,7 +34,7 @@ int main()
         }
     }
 
-    if(foundUser == 0)printf("密碼正確");
+    if(foundUser == 0)printf("查無帳號");
 
     return 0;
 }
