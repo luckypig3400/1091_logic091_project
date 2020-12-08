@@ -1,0 +1,1 @@
+owo some test strings for 20201208_W14_exmaple2_fgetc()_fputc()
