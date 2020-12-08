@@ -3,7 +3,8 @@
 #include <time.h>   // time
 
 int randomNumber, totalDiceNumber = 0;
-int dice[3];
+int dice[30];
+int arrayLen = sizeof(dice) / sizeof(dice[0]);
 void tossDice();
 void sortDice();
 
@@ -38,7 +39,7 @@ void tossDice()
     randomNumber = rand() % 6 + 1;
 
     printf("骰子點數為:");
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < arrayLen; i++)
     {
         dice[i] = rand() % 6 + 1;
         printf("%d ", dice[i]);
@@ -51,7 +52,6 @@ void sortDice()
 {
     //printf("dice.len=%d", sizeof(dice) / sizeof(dice[0]));
     //https://stackoverflow.com/questions/37538/how-do-i-determine-the-size-of-my-array-in-c
-    int arrayLen = sizeof(dice) / sizeof(dice[0]);
     for (int i = 0; i < arrayLen; i++)
     {
         for (int j = 0; j < arrayLen-1; j++)
@@ -66,7 +66,7 @@ void sortDice()
         }
     }
     printf("排序後的骰子點數為:");
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < arrayLen; i++)
     {
         printf("%d ", dice[i]);
     }
