@@ -3,7 +3,7 @@
 #include <time.h>   // time
 
 int randomNumber, totalDiceNumber = 0;
-int dice[30];
+int dice[3];
 int arrayLen = sizeof(dice) / sizeof(dice[0]);
 void tossDice();
 void sortDice();
@@ -19,6 +19,7 @@ int main()
             tossDice();
             sortDice();
             //TODO:判斷其點數。其基本規則
+            judgeDicePoint();
         }
 
         printf("輸入R再投擲一次，或是輸入Q離開:");
@@ -54,7 +55,7 @@ void sortDice()
     //https://stackoverflow.com/questions/37538/how-do-i-determine-the-size-of-my-array-in-c
     for (int i = 0; i < arrayLen; i++)
     {
-        for (int j = 0; j < arrayLen-1; j++)
+        for (int j = 0; j < arrayLen - 1; j++)
         {
             int swap = 0;
             if (dice[j] > dice[j + 1])
@@ -71,4 +72,33 @@ void sortDice()
         printf("%d ", dice[i]);
     }
     printf("\n=========================\n");
+}
+
+void judgeDicePoint()
+{
+    int junko1[3] = {1, 2, 3};
+    int junko2[3] = {4, 5, 6};
+    if (dice == junko1 || dice == junko2)
+    {
+        printf("順子");
+    }
+    else if (dice[0] == dice[1] != dice[2])
+    {
+        printf("%d點", dice[2]);
+    }
+    else if (dice[0] != dice[1] == dice[2])
+    {
+        printf("%d點", dice[0]);
+    }
+    else if (dice[0] == dice[1] == dice[2])
+    {
+        printf("豹子");
+    }
+    else
+    {
+        printf("不符合任何一條規則，自動重骰...");
+        tossDice();
+        sortDice();
+        judgeDicePoint();
+    }
 }
