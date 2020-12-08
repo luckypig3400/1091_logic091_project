@@ -4,13 +4,13 @@
 
 void outputPoker(int[]);
 void sort4partPokerRespectively(int[], int[]);
+int sortedPoker[52];
 
 int main()
 {
 
     int originalPoker[52];
     int randomPoker[52];
-    int sortedPoker[52];
     for (int i = 0; i < 52; i++) //產生原始順序的撲克牌
     {
         originalPoker[i] = i + 1;
@@ -190,5 +190,8 @@ void sort4partPokerRespectively(int in_unsortedPoker[], int in_target_to_store_s
                 in_target_to_store_sortedPoker[j + 1] = swap;
             }
         }
+    }
+    for(int i=0; i<52;i++){//output sorted poker to store in global variable
+        sortedPoker[i] = in_target_to_store_sortedPoker[i];
     }
 }
