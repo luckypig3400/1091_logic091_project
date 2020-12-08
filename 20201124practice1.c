@@ -19,9 +19,9 @@ int main()
 
     for (int i = 0; i < 10; i++)
     {
-        if (stricmp(user[i], userInput) == 0)//stricmp 不計大小寫之字串比較
-        { //找到帳號
-            if (strcmp(pwd[i], pwdInput) == 0)//strcmp 計大小寫之字串比較
+        if (stricmp(user[i], userInput) == 0)  //stricmp 不計大小寫之字串比較
+        {                                      //找到帳號
+            if (strcmp(pwd[i], pwdInput) == 0) //strcmp 計大小寫之字串比較
             {
                 printf("帳號密碼正確");
             }
@@ -34,7 +34,8 @@ int main()
         }
     }
 
-    if(foundUser == 0)printf("查無帳號");
+    if (foundUser == 0)
+        printf("查無帳號");
 
     return 0;
 }

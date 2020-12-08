@@ -4,6 +4,7 @@
 
 int main()
 {
+
     int secretNumber, userInput, guessCount = 0;
 
     srand(time(NULL)); //用時間將亂數表先打亂
@@ -25,8 +26,8 @@ int main()
         scanf("%d", &userInput);
     }
 
-    guessCount += 1;//猜對的那次也要加進去
-    printf("恭喜猜對! 共猜了%d次",guessCount);
+    guessCount += 1; //猜對的那次也要加進去
+    printf("恭喜猜對! 共猜了%d次", guessCount);
 
     return 0;
 }

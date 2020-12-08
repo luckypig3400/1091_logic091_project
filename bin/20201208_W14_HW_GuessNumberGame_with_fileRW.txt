@@ -1,0 +1,2 @@
+topPlayerName=第一名
+topPlayerGuessCount=10
