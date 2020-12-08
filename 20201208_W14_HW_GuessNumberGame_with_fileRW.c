@@ -5,6 +5,10 @@
 int main()
 {
 
+    //TODO:開啟檔案，若無檔案則建立檔案，檔案預設值如下:
+    //topPlayerName=預設第一名玩家
+    //topPlayerGuessCount=66
+
     int secretNumber, userInput, guessCount = 0;
 
     srand(time(NULL)); //用時間將亂數表先打亂
@@ -28,6 +32,9 @@ int main()
 
     guessCount += 1; //猜對的那次也要加進去
     printf("恭喜猜對! 共猜了%d次", guessCount);
+
+    //TODO:如果此局猜數字次數比檔案中的還要好
+    //(打破歷史紀錄)
 
     return 0;
 }
