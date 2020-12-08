@@ -3,11 +3,16 @@
 int main()
 {
     FILE *fp;                      /*宣告一個指標形態的變數，變數名稱:pFile */
-    fp = fopen("fileIO.txt", "r"); /*以讀取方式開啟檔案*/
-    if (fp != NULL)
+    //fp = fopen("fileIO.txt", "r"); /*以讀取方式開啟檔案*/
+    //開檔關檔建議寫法by老師
+    if (!(fp = fopen("fileIO.txt","r")))
     {
-        fclose(fp); /*關閉檔案 */
-        printf("檔案關閉成功\\n");
-    }
+        printf("無法開啟檔案");
+        return -1;
+    }else 
+        printf("成功開啟檔案");
+    
+    fclose(fp);
+
     return 0;
 }
