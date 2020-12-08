@@ -16,7 +16,6 @@ int main()
         if (in_char == 'r' || in_char == 'R')
         {
             tossDice();
-            //TODO:由小到大排列
             sortDice();
             //TODO:判斷其點數。其基本規則
         }
@@ -55,7 +54,7 @@ void sortDice()
     int arrayLen = sizeof(dice) / sizeof(dice[0]);
     for (int i = 0; i < arrayLen; i++)
     {
-        for (int j = 0; i < arrayLen-1; j++)
+        for (int j = 0; j < arrayLen-1; j++)
         {
             int swap = 0;
             if (dice[j] > dice[j + 1])
