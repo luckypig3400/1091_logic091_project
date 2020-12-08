@@ -96,9 +96,6 @@ void judgeDicePoint()
     }
     else
     {
-        printf("結果為:不符合任何一條規則，自動重骰...\n");
-        tossDice();
-        sortDice();
-        judgeDicePoint();
+        printf("結果為:不算\n");
     }
 }
