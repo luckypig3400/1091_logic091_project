@@ -7,6 +7,7 @@ int dice[3];
 int arrayLen = sizeof(dice) / sizeof(dice[0]);
 void tossDice();
 void sortDice();
+void judgeDicePoint();
 
 int main()
 {
@@ -18,7 +19,6 @@ int main()
         {
             tossDice();
             sortDice();
-            //TODO:判斷其點數。其基本規則
             judgeDicePoint();
         }
 
@@ -26,6 +26,8 @@ int main()
         scanf("%c", &in_char);
         if (in_char == 'q' || in_char == 'Q')
             break;
+        else
+            in_char = 'r';//輸入其他字元預設當作要重骰
     }
 
     return 0;
