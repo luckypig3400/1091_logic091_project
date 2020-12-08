@@ -45,7 +45,13 @@ int main()
 
 void outputPoker(int in_Poker[])
 {
-    for (int i = 0; i < 52; i++) //輸出撲克牌
+    //花色大小
+    //正式：♠> ♥> ♠> ♦
+    //台式：♠> ♥> ♦> ♠
+    //https://zh.wikipedia.org/wiki/%E6%92%B2%E5%85%8B%E7%89%8C%E5%9E%8B
+    //https://tw.answers.yahoo.com/question/index?qid=20070321000016KK06596
+    //https://zhidao.baidu.com/question/16245502.html
+    for (int i = 0; i < 52; i++) //輸出撲克牌(數字越小 花色越小，以下採用台式版本)
     {
         if (i % 13 == 0 && i != 0)
             printf("\n"); //每13張分一組
@@ -54,19 +60,19 @@ void outputPoker(int in_Poker[])
             switch (in_Poker[i] % 13)
             {
             case 0:
-                printf("♠K ");
+                printf("♣K ");
                 break;
             case 1:
-                printf("♠A ");
+                printf("♣A ");
                 break;
             case 11:
-                printf("♠J ");
+                printf("♣J ");
                 break;
             case 12:
-                printf("♠Q ");
+                printf("♣Q ");
                 break;
             default:
-                printf("♠%d ", in_Poker[i]);
+                printf("♣%d ", in_Poker[i]);
                 break;
             }
         }
@@ -117,19 +123,19 @@ void outputPoker(int in_Poker[])
             switch (in_Poker[i] % 13)
             {
             case 0:
-                printf("♣K ");
+                printf("♠K ");
                 break;
             case 1:
-                printf("♣A ");
+                printf("♠A ");
                 break;
             case 11:
-                printf("♣J ");
+                printf("♠J ");
                 break;
             case 12:
-                printf("♣Q ");
+                printf("♠Q ");
                 break;
             default:
-                printf("♣%d ", in_Poker[i] % 13);
+                printf("♠%d ", in_Poker[i] % 13);
                 break;
             }
         }
@@ -191,7 +197,8 @@ void sort4partPokerRespectively(int in_unsortedPoker[], int in_target_to_store_s
             }
         }
     }
-    for(int i=0; i<52;i++){//output sorted poker to store in global variable
+    for (int i = 0; i < 52; i++)
+    { //output sorted poker to store in global variable
         sortedPoker[i] = in_target_to_store_sortedPoker[i];
     }
 }
