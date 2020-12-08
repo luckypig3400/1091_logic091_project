@@ -80,23 +80,23 @@ void judgeDicePoint()
     int junko2[3] = {4, 5, 6};
     if (dice == junko1 || dice == junko2)
     {
-        printf("順子");
+        printf("結果為:順子\n");
     }
     else if (dice[0] == dice[1] && dice[1] != dice[2])
     {
-        printf("%d點", dice[2]);
+        printf("結果為:%d點\n", dice[2]);
     }
     else if (dice[0] != dice[1] && dice[1] == dice[2])
     {
-        printf("%d點", dice[0]);
+        printf("結果為:%d點\n", dice[0]);
     }
     else if (dice[0] == dice[1] && dice[1] == dice[2])
     {
-        printf("豹子");
+        printf("結果為:豹子\n");
     }
     else
     {
-        printf("不符合任何一條規則，自動重骰...");
+        printf("結果為:不符合任何一條規則，自動重骰...\n");
         tossDice();
         sortDice();
         judgeDicePoint();
