@@ -1,0 +1,3 @@
+use command "chcp 65001" to active utf-8 output in cmd
+
+//解決CMD顯示出現亂碼:https://blog.darkthread.net/blog/command-prompt-codepage/
