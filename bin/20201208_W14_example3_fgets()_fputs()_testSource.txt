@@ -1,0 +1,54 @@
+20201208_W14_example3_fgets()_fputs().exe
+will copy
+"20201208_W14_example3_fgets()_fputs()_testSource.txt"
+to
+"20201208_W14_example3_fgets()_fputs()_testTarget.txt"
+and ... let's test and see the result
+
+Some text for test below:
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+How to Create a File
+Whenever you want to work with a file, the first step is to create a file. A file is nothing but space in a memory where data is stored.
+
+To create a file in a 'C' program following syntax is used,
+
+FILE *fp;
+fp = fopen ("file_name", "mode");
+In the above syntax, the file is a data structure which is defined in the standard library.
+
+fopen is a standard function which is used to open a file.
+
+If the file is not present on the system, then it is created and then opened.
+If a file is already present on the system, then it is directly opened using this function.
+fp is a file pointer which points to the type file.
+
+Whenever you open or create a file, you have to specify what you are going to do with the file. A file in 'C' programming can be created or opened for reading/writing purposes. A mode is used to specify whether you want to open a file for any of the below-given purposes. Following are the different types of modes in 'C' programming which can be used while working with a file.
+
+How to Close a file
+One should always close a file whenever the operations on file are over. It means the contents and links to the file are terminated. This prevents accidental damage to the file.
+
+'C' provides the fclose function to perform file closing operation. The syntax of fclose is as follows,
+
+fclose (file_pointer);
+Example:
+
+FILE *fp;
+fp  = fopen ("data.txt", "r");
+fclose (fp);
+The fclose function takes a file pointer as an argument. The file associated with the file pointer is then closed with the help of fclose function. It returns 0 if close was successful and EOF (end of file) if there is an error has occurred while file closing.
+
+After closing the file, the same file pointer can also be used with other files.
+
+In 'C' programming, files are automatically close when the program is terminated. Closing a file manually by writing fclose function is a good programming practice.
+
+Writing to a File
+In C, when you write to a file, newline characters '\n' must be explicitly added.
+
+The stdio library offers the necessary functions to write to a file:
+
+fputc(char, file_pointer): It writes a character to the file pointed to by file_pointer.
+fputs(str, file_pointer): It writes a string to the file pointed to by file_pointer.
+fprintf(file_pointer, str, variable_lists): It prints a string to the file pointed to by file_pointer. The string can optionally include format specifiers and a list of variables variable_lists.
+The program below shows how to perform writing to a file:
