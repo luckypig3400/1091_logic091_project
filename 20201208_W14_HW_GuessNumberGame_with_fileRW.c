@@ -32,7 +32,9 @@ int main()
 
     while (fgets(tempstr, 32, file1) != NULL) /* 使用迴圈讀取完整來源檔內容 */
     {
-        
+        strcat(fileContext, tempstr); //連接字串
+        // Use strcat to concatenate two strings
+        // https://stackoverflow.com/questions/8465006/how-do-i-concatenate-two-strings-in-c
     }
 
     if (fileContext[13] == '=')
