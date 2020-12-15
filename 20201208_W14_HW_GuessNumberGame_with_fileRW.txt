@@ -1,0 +1,2 @@
+topPlayerName=預設第一名玩家
+topPlayerGuessCount=66
