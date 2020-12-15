@@ -19,11 +19,15 @@ void main(void)
         exit(1); /* 強迫結束程式 */
     }
     printf("讀取並寫入中......\n");
+
+    // 以下迴圈為採用一個字元一個字元複製
     while ((c = fgetc(fp1)) != EOF) /* 使用迴圈讀取來源檔內容 */
     {
         printf("%c", c);
         fputc(c, fp2); /* 使用迴圈寫入目的檔內容 */
     }
+    // 以上迴圈為採用一個字元一個字元複製
+
     printf("\n讀取並寫入完畢......\n");
     fclose(fp1);
     fclose(fp2);
