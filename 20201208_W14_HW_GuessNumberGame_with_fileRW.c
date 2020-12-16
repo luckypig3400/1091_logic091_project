@@ -37,6 +37,8 @@ int main()
         // https://stackoverflow.com/questions/8465006/how-do-i-concatenate-two-strings-in-c
     }
 
+    printf("%s\n", fileContext);
+
     if (fileContext[13] == '=')
     {
         printf("正確的存檔存檔內容為:%s\n", fileContext);
