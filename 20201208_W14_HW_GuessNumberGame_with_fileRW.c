@@ -69,6 +69,7 @@ int main()
     else
     {
         printf("存檔錯誤，將重建紀錄檔案");
+        writeFile();
     }
 
     printf("抓出來的變數值如下:\n");
@@ -122,6 +123,10 @@ int main()
             topPlayerName[i] = '\0';
         printf("請輸入您的名字以保存最高分紀錄:");
         scanf("%s", &topPlayerName);
+
+        writeFile();
+
+        printf("儲存成功\n");
     }
 
     system("pause");
