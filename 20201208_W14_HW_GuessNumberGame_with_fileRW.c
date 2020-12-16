@@ -37,7 +37,7 @@ int main()
     if ((file1 == NULL))
     {
         printf("檔案發生錯誤(初次執行程式或是檔案毀損)\n");
-        printf("建立預設檔案中...");
+        printf("建立預設檔案中...\n");
         writeFile();
     }
 
@@ -68,8 +68,9 @@ int main()
     }
     else
     {
-        printf("存檔錯誤，將重建紀錄檔案");
+        printf("存檔錯誤，將重建紀錄檔案...\n");
         writeFile();
+        printf("重建紀錄檔案成功\n");
     }
 
     // printf("抓出來的變數值如下:\n");
@@ -122,7 +123,7 @@ int main()
 
         for (int i = 0; i < 128; i++) //清除名字
             topPlayerName[i] = '\0';
-        printf("請輸入您的名字以保存最高分紀錄:");
+        printf("請輸入您的名字以保存最高分紀錄(不支援空白字元):");
         scanf("%s", &topPlayerName);
 
         writeFile();
