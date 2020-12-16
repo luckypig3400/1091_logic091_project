@@ -27,7 +27,6 @@ int main()
         printf("建立預設檔案中...");
         fputs("topPlayerName=預設第一名玩家\n", file1);
         fputs("topPlayerGuessCount=66", file1);
-        exit(1); /* 強迫結束程式 */
     }
 
     while (fgets(tempstr, 32, file1) != NULL) /* 使用迴圈讀取完整來源檔內容 */
@@ -37,11 +36,9 @@ int main()
         // https://stackoverflow.com/questions/8465006/how-do-i-concatenate-two-strings-in-c
     }
 
-    printf("%s\n", fileContext);
-
     if (fileContext[13] == '=')//檢查檔案正確性並存放變數值
     {
-        printf("正確的存檔存檔內容為:\n%s\n", fileContext);
+        printf("目前的存檔內容為:\n%s\n", fileContext);
         int nameCopyFinished = 0;
         int nameCharCount = 0;
         for (int i = 14; i < 256; i++)
@@ -54,7 +51,6 @@ int main()
             else
             {
                 nameCopyFinished = 1;
-                printf("get topPlayerName:%s\n", topPlayerName);
                 i += 21;                    //直接跳過紀錄最高分變數的=符號
                 for (int j = 0; j < 3; j++) //最高分紀錄只取三位數
                 {
@@ -65,8 +61,10 @@ int main()
             }
         }
 
+        printf("抓出來的變數值如下:\n");
         printf("topPlayerName:%s\n", topPlayerName);
         printf("topPlayerGuessCount:%s\n",topPlayerGuessCount);
+        printf("%c",topPlayerGuessCount[2]);
     }
 
     srand(time(NULL)); //用時間將亂數表先打亂
