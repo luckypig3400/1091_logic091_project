@@ -12,7 +12,7 @@ int main()
     //topPlayerName=預設第一名玩家
     //topPlayerGuessCount=66
     int secretNumber, userInput, guessCount = 0;
-    char topPlayerName[32];
+    char topPlayerName[128];
     char topPlayerGuessCount[3] = "66";
     char fileContext[256] = "";
     char filename[60] = "20201208_W14_HW_GuessNumberGame_with_fileRW.txt";
@@ -41,18 +41,24 @@ int main()
 
     if (fileContext[13] == '=')
     {
-        printf("正確的存檔存檔內容為:%s\n", fileContext);
+        printf("正確的存檔存檔內容為:\n%s\n", fileContext);
+        int nameCopyFinished = 0;
         int nameCharCount = 0;
         for (int i = 14; i < 256; i++)
         {
-            if (fileContext[i] == 't')
+            if (fileContext[i] != '\n' && nameCopyFinished == 0)
             {
-                i += 18;
+                topPlayerName[nameCharCount] = fileContext[i];
+                nameCharCount += 1;
             }
-            if (fileContext[i] == '=')
-                printf("找到最高紀錄的等於符號");
-            topPlayerName[nameCharCount] = fileContext[i];
-            nameCharCount += 1;
+            else
+            {
+                nameCopyFinished = 1;
+                printf("get topPlayerName:%s\n", topPlayerName);
+                i += 21;//直接跳過紀錄最高分變數的=符號
+                printf("%c", fileContext[i]);
+                break;
+            }
         }
     }
 
