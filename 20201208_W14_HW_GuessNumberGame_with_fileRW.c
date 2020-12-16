@@ -5,38 +5,40 @@
 
 FILE *file1;
 
+int secretNumber, userInput, guessCount = 0;
+char topPlayerName[128] = "預設第一名玩家";
+
+//自行規定儲存最高紀錄的數據只能有兩位數
+char topPlayerGuessCount[6] = "66";
+//給到6格是為了避免記憶體溢出所造成的錯誤
+
+int bestRecord = 66;
+char fileContext[256] = "";
+char filename[60] = "20201208_W14_HW_GuessNumberGame_with_fileRW.txt";
+char tempstr[32];
+
+void writeFile()
+{
+    file1 = fopen(filename, "w");
+    char writeCahce[256] = "";
+    strcat(writeCahce, "topPlayerGuessCount=");
+    strcat(writeCahce, topPlayerGuessCount);
+    strcat(writeCahce, "\ntopPlayerName=");
+    strcat(writeCahce, topPlayerName);
+    fputs(writeCahce, file1);
+    fclose(file1); //寫完檔案關閉以存檔
+}
+
 int main()
 {
-
-    //TODO:開啟檔案，若無檔案則建立檔案，檔案預設值如下:
-    //topPlayerName=預設第一名玩家
-    //topPlayerGuessCount=66
-    int secretNumber, userInput, guessCount = 0;
-    char topPlayerName[128] = "預設第一名玩家";
-    
-    //自行規定儲存最高紀錄的數據只能有兩位數
-    char topPlayerGuessCount[6] = "66";
-    //給到6格是為了避免記憶體溢出所造成的錯誤
-
-    int bestRecord = 66;
-    char fileContext[256] = "";
-    char filename[60] = "20201208_W14_HW_GuessNumberGame_with_fileRW.txt";
-    char tempstr[32];
 
     file1 = fopen(filename, "r"); //讀取歷史檔案僅採用讀取模式(可以測試檔案是否存在)
 
     if ((file1 == NULL))
     {
         printf("檔案發生錯誤(初次執行程式或是檔案毀損)\n");
-        file1 = fopen(filename, "w");
         printf("建立預設檔案中...");
-        char writeCahce[256] = "";
-        strcat(writeCahce, "topPlayerGuessCount=");
-        strcat(writeCahce, topPlayerGuessCount);
-        strcat(writeCahce, "\ntopPlayerName=");
-        strcat(writeCahce, topPlayerName);
-        fputs(writeCahce, file1);
-        fclose(file1); //寫完檔案關閉以存檔
+        writeFile();
     }
 
     while (fgets(tempstr, 32, file1) != NULL) /* 使用迴圈讀取完整來源檔內容 */
@@ -115,6 +117,11 @@ int main()
             topPlayerGuessCount[1] = (char)((bestRecord % 10) + (int)'0');
             printf("bestRecord in char array:%c%c\n", topPlayerGuessCount[0], topPlayerGuessCount[1]);
         }
+
+        for (int i = 0; i < 128; i++) //清除名字
+            topPlayerName[i] = '\0';
+        printf("請輸入您的名字以保存最高分紀錄:");
+        scanf("%s", &topPlayerName);
     }
 
     system("pause");
