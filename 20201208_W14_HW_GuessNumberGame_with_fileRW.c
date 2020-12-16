@@ -39,7 +39,7 @@ int main()
 
     printf("%s\n", fileContext);
 
-    if (fileContext[13] == '=')
+    if (fileContext[13] == '=')//檢查檔案正確性並存放變數值
     {
         printf("正確的存檔存檔內容為:\n%s\n", fileContext);
         int nameCopyFinished = 0;
@@ -55,11 +55,18 @@ int main()
             {
                 nameCopyFinished = 1;
                 printf("get topPlayerName:%s\n", topPlayerName);
-                i += 21;//直接跳過紀錄最高分變數的=符號
-                printf("%c", fileContext[i]);
+                i += 21;                    //直接跳過紀錄最高分變數的=符號
+                for (int j = 0; j < 3; j++) //最高分紀錄只取三位數
+                {
+                    topPlayerGuessCount[j] = fileContext[i];
+                    i += 1;
+                }
                 break;
             }
         }
+
+        printf("topPlayerName:%s\n", topPlayerName);
+        printf("topPlayerGuessCount:%s\n",topPlayerGuessCount);
     }
 
     srand(time(NULL)); //用時間將亂數表先打亂
