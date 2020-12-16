@@ -14,6 +14,7 @@ int main()
     int secretNumber, userInput, guessCount = 0;
     char topPlayerName[128];
     char topPlayerGuessCount[2] = "66";
+    int bestRecord;
     char fileContext[256] = "";
     char filename[60] = "20201208_W14_HW_GuessNumberGame_with_fileRW.txt";
     char tempstr[32];
@@ -60,9 +61,10 @@ int main()
     }
 
     printf("抓出來的變數值如下:\n");
-    printf("topPlayerGuessCount:%s\n", topPlayerGuessCount);
+    printf("topPlayerGuessCount:%c%c\n", topPlayerGuessCount[0],topPlayerGuessCount[1]);
     printf("topPlayerName:%s\n", topPlayerName);
-    printf("topPlayerGuessCount:%s\n", topPlayerGuessCount);
+    bestRecord = (int)(topPlayerGuessCount[0]-'0') * 10 + (int)(topPlayerGuessCount[1]-'0');
+    printf("bestRecord in deciaml:%d\n",bestRecord);
 
     srand(time(NULL)); //用時間將亂數表先打亂
 
@@ -87,6 +89,8 @@ int main()
     printf("恭喜猜對! 共猜了%d次", guessCount);
 
     //TODO:如果此局猜數字次數比檔案中的還要好
+    
+    //if(guessCount < )
     //(打破歷史紀錄)
 
     system("pause");
