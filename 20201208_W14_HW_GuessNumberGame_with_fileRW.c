@@ -13,7 +13,7 @@ int main()
     //topPlayerGuessCount=66
     int secretNumber, userInput, guessCount = 0;
     char topPlayerName[128];
-    char topPlayerGuessCount[3] = "66";
+    char topPlayerGuessCount[2] = "66";
     char fileContext[256] = "";
     char filename[60] = "20201208_W14_HW_GuessNumberGame_with_fileRW.txt";
     char tempstr[32];
@@ -25,8 +25,9 @@ int main()
         printf("檔案發生錯誤(初次執行程式或是檔案毀損)\n");
         file1 = fopen(filename, "w");
         printf("建立預設檔案中...");
-        fputs("topPlayerName=預設第一名玩家\n", file1);
-        fputs("topPlayerGuessCount=66", file1);
+        fputs("topPlayerGuessCount=66\n", file1);
+        fputs("topPlayerName=預設第一名玩家", file1);
+        fclose(file1); //寫完檔案關閉以存檔
     }
 
     while (fgets(tempstr, 32, file1) != NULL) /* 使用迴圈讀取完整來源檔內容 */
@@ -36,36 +37,32 @@ int main()
         // https://stackoverflow.com/questions/8465006/how-do-i-concatenate-two-strings-in-c
     }
 
-    if (fileContext[13] == '=')//檢查檔案正確性並存放變數值
+    if (fileContext[19] == '=' && fileContext[36] == '=') //檢查檔案正確性並存放最高分數
     {
         printf("目前的存檔內容為:\n%s\n", fileContext);
-        int nameCopyFinished = 0;
-        int nameCharCount = 0;
-        for (int i = 14; i < 256; i++)
-        {
-            if (fileContext[i] != '\n' && nameCopyFinished == 0)
-            {
-                topPlayerName[nameCharCount] = fileContext[i];
-                nameCharCount += 1;
-            }
-            else
-            {
-                nameCopyFinished = 1;
-                i += 21;                    //直接跳過紀錄最高分變數的=符號
-                for (int j = 0; j < 3; j++) //最高分紀錄只取三位數
-                {
-                    topPlayerGuessCount[j] = fileContext[i];
-                    i += 1;
-                }
-                break;
-            }
-        }
 
-        printf("抓出來的變數值如下:\n");
-        printf("topPlayerName:%s\n", topPlayerName);
-        printf("topPlayerGuessCount:%s\n",topPlayerGuessCount);
-        printf("%c",topPlayerGuessCount[2]);
+        //自行規定儲存最高紀錄的數據只能有兩位數
+        topPlayerGuessCount[0] = fileContext[20];
+        topPlayerGuessCount[1] = fileContext[21];
+
+        int nameCharCount = 0, i = 37;
+        while (fileContext[i] != '\0')
+        {
+            topPlayerName[nameCharCount] = fileContext[i];
+            printf("%d",i);
+            nameCharCount += 1;
+            i += 1;
+        }
     }
+    else
+    {
+        printf("存檔錯誤，將重建紀錄檔案");
+    }
+
+    printf("抓出來的變數值如下:\n");
+    printf("topPlayerGuessCount:%s\n", topPlayerGuessCount);
+    printf("topPlayerName:%s\n", topPlayerName);
+    printf("topPlayerGuessCount:%s\n", topPlayerGuessCount);
 
     srand(time(NULL)); //用時間將亂數表先打亂
 
