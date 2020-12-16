@@ -51,7 +51,7 @@ int main()
 
     if (fileContext[19] == '=' && fileContext[36] == '=') //檢查檔案正確性並存放最高分數
     {
-        printf("目前的存檔內容為:\n%s\n", fileContext);
+        // printf("目前的存檔內容為:\n%s\n", fileContext);
 
         //自行規定儲存最高紀錄的數據只能有兩位數
         topPlayerGuessCount[0] = fileContext[20];
@@ -61,7 +61,7 @@ int main()
         while (fileContext[i] != '\0')
         {
             topPlayerName[nameCharCount] = fileContext[i];
-            printf("%d", i);
+            // printf("%d", i);
             nameCharCount += 1;
             i += 1;
         }
@@ -72,13 +72,14 @@ int main()
         writeFile();
     }
 
-    printf("抓出來的變數值如下:\n");
-    printf("topPlayerGuessCount:%s\n", topPlayerGuessCount);
-    printf("topPlayerName:%s\n", topPlayerName);
+    // printf("抓出來的變數值如下:\n");
+    // printf("topPlayerGuessCount:%s\n", topPlayerGuessCount);
+    // printf("topPlayerName:%s\n", topPlayerName);
 
     bestRecord = (int)(topPlayerGuessCount[0] - '0') * 10 + (int)(topPlayerGuessCount[1] - '0');
     //把從檔案讀到的最高分轉成int儲存
-    printf("bestRecord in deciaml:%d\n", bestRecord);
+
+    // printf("bestRecord in deciaml:%d\n", bestRecord);
 
     srand(time(NULL)); //用時間將亂數表先打亂
 
@@ -110,13 +111,13 @@ int main()
         {
             topPlayerGuessCount[0] = '0';
             topPlayerGuessCount[1] = (char)(bestRecord + (int)'0');
-            printf("bestRecord in char array:%c%c\n", topPlayerGuessCount[0], topPlayerGuessCount[1]);
+            // printf("bestRecord in char array:%c%c\n", topPlayerGuessCount[0], topPlayerGuessCount[1]);
         }
         else
         {
             topPlayerGuessCount[0] = (char)((bestRecord / 10) + (int)'0');
             topPlayerGuessCount[1] = (char)((bestRecord % 10) + (int)'0');
-            printf("bestRecord in char array:%c%c\n", topPlayerGuessCount[0], topPlayerGuessCount[1]);
+            // printf("bestRecord in char array:%c%c\n", topPlayerGuessCount[0], topPlayerGuessCount[1]);
         }
 
         for (int i = 0; i < 128; i++) //清除名字
