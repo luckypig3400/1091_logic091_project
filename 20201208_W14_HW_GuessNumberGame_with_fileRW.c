@@ -12,9 +12,9 @@ int main()
     //topPlayerName=預設第一名玩家
     //topPlayerGuessCount=66
     int secretNumber, userInput, guessCount = 0;
-    char topPlayerName[128];
+    char topPlayerName[128] = "預設第一名玩家";
     char topPlayerGuessCount[2] = "66";
-    int bestRecord;
+    int bestRecord = 66;
     char fileContext[256] = "";
     char filename[60] = "20201208_W14_HW_GuessNumberGame_with_fileRW.txt";
     char tempstr[32];
@@ -37,6 +37,7 @@ int main()
         // Use strcat to concatenate two strings
         // https://stackoverflow.com/questions/8465006/how-do-i-concatenate-two-strings-in-c
     }
+    fclose(file1); //讀完檔案關閉
 
     if (fileContext[19] == '=' && fileContext[36] == '=') //檢查檔案正確性並存放最高分數
     {
@@ -50,7 +51,7 @@ int main()
         while (fileContext[i] != '\0')
         {
             topPlayerName[nameCharCount] = fileContext[i];
-            printf("%d",i);
+            printf("%d", i);
             nameCharCount += 1;
             i += 1;
         }
@@ -61,10 +62,10 @@ int main()
     }
 
     printf("抓出來的變數值如下:\n");
-    printf("topPlayerGuessCount:%c%c\n", topPlayerGuessCount[0],topPlayerGuessCount[1]);
+    printf("topPlayerGuessCount:%c%c\n", topPlayerGuessCount[0], topPlayerGuessCount[1]);
     printf("topPlayerName:%s\n", topPlayerName);
-    bestRecord = (int)(topPlayerGuessCount[0]-'0') * 10 + (int)(topPlayerGuessCount[1]-'0');
-    printf("bestRecord in deciaml:%d\n",bestRecord);
+    bestRecord = (int)(topPlayerGuessCount[0] - '0') * 10 + (int)(topPlayerGuessCount[1] - '0');
+    printf("bestRecord in deciaml:%d\n", bestRecord);
 
     srand(time(NULL)); //用時間將亂數表先打亂
 
@@ -86,12 +87,24 @@ int main()
     }
 
     guessCount += 1; //猜對的那次也要加進去
-    printf("恭喜猜對! 共猜了%d次", guessCount);
+    printf("恭喜猜對! 共猜了%d次\n", guessCount);
 
-    //TODO:如果此局猜數字次數比檔案中的還要好
-    
-    //if(guessCount < )
-    //(打破歷史紀錄)
+    if (guessCount < bestRecord) //如果此局猜數字次數比檔案中的還要好寫入存檔
+    {
+        bestRecord = guessCount;
+        if (bestRecord < 10)
+        {
+            topPlayerGuessCount[0] = '0';
+            topPlayerGuessCount[1] = (char)(bestRecord + (int)'0');
+            printf("bestRecord in string:%s\n", topPlayerGuessCount);
+        }
+        else
+        {
+            topPlayerGuessCount[0] = (char)((bestRecord/10) + (int)'0');
+            topPlayerGuessCount[1] = (char)((bestRecord%10) + (int)'0');
+            printf("bestRecord in string:%s\n", topPlayerGuessCount);
+        }
+    }
 
     system("pause");
 
