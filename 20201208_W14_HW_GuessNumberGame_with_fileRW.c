@@ -26,8 +26,12 @@ int main()
         printf("檔案發生錯誤(初次執行程式或是檔案毀損)\n");
         file1 = fopen(filename, "w");
         printf("建立預設檔案中...");
-        fputs("topPlayerGuessCount=66\n", file1);
-        fputs("topPlayerName=預設第一名玩家", file1);
+        char writeCahce[256] = "";
+        strcat(writeCahce, "topPlayerGuessCount=");
+        strcat(writeCahce, topPlayerGuessCount);
+        strcat(writeCahce, "\ntopPlayerName=");
+        strcat(writeCahce, topPlayerName);
+        fputs(writeCahce, file1);
         fclose(file1); //寫完檔案關閉以存檔
     }
 
@@ -64,7 +68,7 @@ int main()
     printf("抓出來的變數值如下:\n");
     printf("topPlayerGuessCount:%c%c\n", topPlayerGuessCount[0], topPlayerGuessCount[1]);
     printf("topPlayerName:%s\n", topPlayerName);
-    
+
     bestRecord = (int)(topPlayerGuessCount[0] - '0') * 10 + (int)(topPlayerGuessCount[1] - '0');
     //把從檔案讀到的最高分轉成int儲存
     printf("bestRecord in deciaml:%d\n", bestRecord);
@@ -93,19 +97,19 @@ int main()
 
     if (guessCount < bestRecord) //如果此局猜數字次數比檔案中的還要好寫入存檔
     {
-        printf("太厲害了!!!恭喜您破了%s的歷史紀錄%d次!\n", topPlayerName,bestRecord);
+        printf("太厲害了!!!恭喜您破了%s的歷史紀錄%d次!\n", topPlayerName, bestRecord);
         bestRecord = guessCount;
         if (bestRecord < 10)
         {
             topPlayerGuessCount[0] = '0';
             topPlayerGuessCount[1] = (char)(bestRecord + (int)'0');
-            printf("bestRecord in char array:%c%c\n", topPlayerGuessCount[0],topPlayerGuessCount[1]);
+            printf("bestRecord in char array:%c%c\n", topPlayerGuessCount[0], topPlayerGuessCount[1]);
         }
         else
         {
-            topPlayerGuessCount[0] = (char)((bestRecord/10) + (int)'0');
-            topPlayerGuessCount[1] = (char)((bestRecord%10) + (int)'0');
-            printf("bestRecord in char array:%c%c\n", topPlayerGuessCount[0],topPlayerGuessCount[1]);
+            topPlayerGuessCount[0] = (char)((bestRecord / 10) + (int)'0');
+            topPlayerGuessCount[1] = (char)((bestRecord % 10) + (int)'0');
+            printf("bestRecord in char array:%c%c\n", topPlayerGuessCount[0], topPlayerGuessCount[1]);
         }
     }
 
