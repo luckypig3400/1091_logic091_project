@@ -13,7 +13,11 @@ int main()
     //topPlayerGuessCount=66
     int secretNumber, userInput, guessCount = 0;
     char topPlayerName[128] = "預設第一名玩家";
-    char topPlayerGuessCount[2] = "66";
+    
+    //自行規定儲存最高紀錄的數據只能有兩位數
+    char topPlayerGuessCount[6] = "66";
+    //給到6格是為了避免記憶體溢出所造成的錯誤
+
     int bestRecord = 66;
     char fileContext[256] = "";
     char filename[60] = "20201208_W14_HW_GuessNumberGame_with_fileRW.txt";
@@ -66,7 +70,7 @@ int main()
     }
 
     printf("抓出來的變數值如下:\n");
-    printf("topPlayerGuessCount:%c%c\n", topPlayerGuessCount[0], topPlayerGuessCount[1]);
+    printf("topPlayerGuessCount:%s\n", topPlayerGuessCount);
     printf("topPlayerName:%s\n", topPlayerName);
 
     bestRecord = (int)(topPlayerGuessCount[0] - '0') * 10 + (int)(topPlayerGuessCount[1] - '0');
