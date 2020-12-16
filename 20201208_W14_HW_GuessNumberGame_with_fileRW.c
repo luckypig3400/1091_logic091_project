@@ -64,7 +64,9 @@ int main()
     printf("抓出來的變數值如下:\n");
     printf("topPlayerGuessCount:%c%c\n", topPlayerGuessCount[0], topPlayerGuessCount[1]);
     printf("topPlayerName:%s\n", topPlayerName);
+    
     bestRecord = (int)(topPlayerGuessCount[0] - '0') * 10 + (int)(topPlayerGuessCount[1] - '0');
+    //把從檔案讀到的最高分轉成int儲存
     printf("bestRecord in deciaml:%d\n", bestRecord);
 
     srand(time(NULL)); //用時間將亂數表先打亂
@@ -91,18 +93,19 @@ int main()
 
     if (guessCount < bestRecord) //如果此局猜數字次數比檔案中的還要好寫入存檔
     {
+        printf("太厲害了!!!恭喜您破了%s的歷史紀錄%d次!\n", topPlayerName,bestRecord);
         bestRecord = guessCount;
         if (bestRecord < 10)
         {
             topPlayerGuessCount[0] = '0';
             topPlayerGuessCount[1] = (char)(bestRecord + (int)'0');
-            printf("bestRecord in string:%s\n", topPlayerGuessCount);
+            printf("bestRecord in char array:%c%c\n", topPlayerGuessCount[0],topPlayerGuessCount[1]);
         }
         else
         {
             topPlayerGuessCount[0] = (char)((bestRecord/10) + (int)'0');
             topPlayerGuessCount[1] = (char)((bestRecord%10) + (int)'0');
-            printf("bestRecord in string:%s\n", topPlayerGuessCount);
+            printf("bestRecord in char array:%c%c\n", topPlayerGuessCount[0],topPlayerGuessCount[1]);
         }
     }
 
