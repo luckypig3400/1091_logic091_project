@@ -49,7 +49,7 @@ int main()
     }
     fclose(file1); //讀完檔案關閉
 
-    if (fileContext[19] == '=' && fileContext[36] == '=') //檢查檔案正確性並存放最高分數
+    if (fileContext[19] == '=' && fileContext[36] == '=') //檢查檔案正確性並存放最高分數與玩家姓名
     {
         // printf("目前的存檔內容為:\n%s\n", fileContext);
 
@@ -58,6 +58,10 @@ int main()
         topPlayerGuessCount[1] = fileContext[21];
 
         int nameCharCount = 0, i = 37;
+
+        memset(topPlayerName, '\0' , strlen(topPlayerName)); //讀入變數前先清空
+        // https://stackoverflow.com/questions/8107826/proper-way-to-empty-a-c-string
+
         while (fileContext[i] != '\0')
         {
             topPlayerName[nameCharCount] = fileContext[i];
@@ -132,7 +136,8 @@ int main()
     }
     else
     {
-        //TODO 沒破紀錄顯示歷史最高紀錄
+        printf("本遊戲的最高紀錄保持者%s共花了%d次猜中!\n", topPlayerName, bestRecord);
+        printf("加油~! 多嘗試幾次您也可以打破此紀錄的!\n");
     }
 
     system("pause");
