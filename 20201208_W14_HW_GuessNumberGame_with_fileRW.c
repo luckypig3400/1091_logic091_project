@@ -130,6 +130,10 @@ int main()
 
         printf("儲存成功\n");
     }
+    else
+    {
+        //TODO 沒破紀錄顯示歷史最高紀錄
+    }
 
     system("pause");
 

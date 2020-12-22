@@ -1,2 +1,2 @@
-topPlayerGuessCount=06
-topPlayerName=ohYeah
+topPlayerGuessCount=05
+topPlayerName=user666
