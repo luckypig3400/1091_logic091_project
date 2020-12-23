@@ -32,8 +32,6 @@ int main()
         char userAccount[60] = "HN";
         strcat(userAccount, num);
         printf("%s\t", userAccount);
-        strcat(userAccount, "\t");
-        fputs(userAccount, file1);
 
         char password[32];
         password[0] = '2';
@@ -45,6 +43,8 @@ int main()
         password[3] = rand() % 10 + '0'; //generate '0' to '9'
         password[6] = rand() % 10 + '0'; //generate '0' to '9'
         printf("%s\n", password);
+
+        writeFile(userAccount, password);
     }
 
     fclose(file1);
