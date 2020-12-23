@@ -26,13 +26,19 @@ int main()
         int i = 0;
         while (fgets(tempStr, 64, file1) != NULL)
         {
-            for (int j = 0; j < 5; j++)
-            { // tempStr[5]為\t 不複製
+            for (int j = 0; j < 64; j++)
+            {
+                if (tempStr[j] == '\t')
+                    break; // 遇到\t直接跳出迴圈不複製
                 userAccount[i][j] = tempStr[j];
-            }// 其實這樣寫不太好，因為這樣只能讀取符合標準格式與長度的帳號與密碼
-            for (int j = 0; j < 8; j++)
+            } // 改寫成這樣，可以讀取符合標準格式(有\t與\n)但長度不同的帳號與密碼
+            int pwdDetectedLocation = 0;
+            for (int j = 0; j < 64; j++)
             { // 密碼為8個字元從tempStr[6]開始
-                userPWD[i][j] = tempStr[6 + j];
+                if (pwdDetectedLocation > 0)
+                    userPWD[i][j - pwdDetectedLocation] = tempStr[j];
+                if (tempStr[j] == '\t')
+                    pwdDetectedLocation = j + 1; // 遇到\t才開始複製，並記錄碰到\t的下一格字元位置
             }
             printf("%s\t%s\n", userAccount[i], userPWD[i]);
             i += 1;
