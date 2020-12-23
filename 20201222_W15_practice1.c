@@ -4,7 +4,7 @@
 #include <time.h>
 
 FILE *file1;
-char fileName[60] = "user.dat";
+char fileName[60] = ".\\bin\\user.dat";
 
 void writeFile(char in_userAccount[60], char in_pwd[60])
 {
