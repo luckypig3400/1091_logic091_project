@@ -17,7 +17,7 @@ void writeFile(char in_userAccount[60], char in_pwd[60])
 
 int main()
 {
-    file1 = fopen(fileName, "w");
+    file1 = fopen(fileName, "w+");
 
     for (int i = 1; i <= 100; i++)
     {
@@ -29,6 +29,10 @@ int main()
         char userAccount[60] = "HN";
         strcat(userAccount, num);
         printf("%s\n", userAccount);
+        strcat(userAccount, "\t");
+        fputs(userAccount, file1);
+
+
     }
 
     fclose(file1);
