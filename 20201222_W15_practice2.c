@@ -40,11 +40,41 @@ int main()
                 if (tempStr[j] == '\t')
                     pwdDetectedLocation = j + 1; // 遇到\t才開始複製，並記錄碰到\t的下一格字元位置
             }
-            printf("%s\t%s\n", userAccount[i], userPWD[i]);
+            // printf("%s\t%s\n", userAccount[i], userPWD[i]); //hide debug infos
             i += 1;
         }
 
         printf("成功讀取檔案\n");
+
+        char searchAccStr[64];
+        char searchPWDstr[64];
+        memset(searchAccStr, '\0', 64);
+        memset(searchPWDstr, '\0', 64);
+        printf("請輸入使用者帳號:");
+        scanf("%s", &searchAccStr);
+        printf("請輸入密碼:");
+        scanf("%s", &searchPWDstr);
+        int foundAccount = 0;
+        for (int i = 0; i < 101; i++)
+        {
+            if (strcmp(userAccount[i], searchAccStr) == 0)
+            {
+                printf("找到帳號!\n");
+                foundAccount = 1;
+                if (strcmp(userPWD[i], searchPWDstr) == 0)
+                {
+                    printf("密碼正確!歡迎%s成功登入\n", userAccount[i]);
+                }
+                else
+                {
+                    printf("密碼輸入錯誤>=<\n");
+                }
+                break;
+            }
+        }
+
+        if (foundAccount == 0)
+            printf("查無此帳號，請查明後再播");
 
         return 0;
     }
