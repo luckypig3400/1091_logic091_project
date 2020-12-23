@@ -20,6 +20,8 @@ int main()
 {
     file1 = fopen(fileName, "w+");
 
+    srand(time(NULL)); 
+
     for (int i = 1; i <= 100; i++)
     {
         char num[9];
@@ -35,7 +37,6 @@ int main()
 
         char password[32];
         password[0] = '2';
-        srand(time(NULL));
         password[1] = rand() % 26 + 97;  //a~z 97 ~ 122
         password[4] = rand() % 26 + 97;  //a~z 97 ~ 122
         password[7] = rand() % 26 + 97;  //a~z 97 ~ 122
