@@ -19,10 +19,10 @@ int main()
     else
     {
         char tempStr[64];
-        char userAccount[100][32];
-        char userPWD[100][32];
-        memset(userAccount, '\0', 3200); //要先把變數的記憶體全部清空才不會出現亂碼
-        memset(userPWD, '\0', 3200);
+        char userAccount[101][32];
+        char userPWD[101][32];
+        memset(userAccount, '\0', 3232); //要先把變數的記憶體全部清空才不會出現亂碼
+        memset(userPWD, '\0', 3232);
         int i = 0;
         while (fgets(tempStr, 64, file1) != NULL)
         {
@@ -35,7 +35,7 @@ int main()
             int pwdDetectedLocation = 0;
             for (int j = 0; j < 64; j++)
             { // 密碼為8個字元從tempStr[6]開始
-                if (pwdDetectedLocation > 0)
+                if (pwdDetectedLocation > 0 && tempStr[j] != '\n')
                     userPWD[i][j - pwdDetectedLocation] = tempStr[j];
                 if (tempStr[j] == '\t')
                     pwdDetectedLocation = j + 1; // 遇到\t才開始複製，並記錄碰到\t的下一格字元位置
