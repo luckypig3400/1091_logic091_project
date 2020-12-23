@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 FILE *file1;
 char fileName[60] = "user.dat";
@@ -28,11 +29,21 @@ int main()
 
         char userAccount[60] = "HN";
         strcat(userAccount, num);
-        printf("%s\n", userAccount);
+        printf("%s\t", userAccount);
         strcat(userAccount, "\t");
         fputs(userAccount, file1);
 
-
+        char password[32];
+        password[0] = '2';
+        srand(time(NULL));
+        password[1] = rand() % 26 + 97;  //a~z 97 ~ 122
+        password[4] = rand() % 26 + 97;  //a~z 97 ~ 122
+        password[7] = rand() % 26 + 97;  //a~z 97 ~ 122
+        password[2] = rand() % 26 + 65;  //A~Z 65 ~ 90
+        password[5] = rand() % 26 + 65;  //A~Z 65 ~ 90
+        password[3] = rand() % 10 + '0'; //generate '0' to '9'
+        password[6] = rand() % 10 + '0'; //generate '0' to '9'
+        printf("%s\n", password);
     }
 
     fclose(file1);
