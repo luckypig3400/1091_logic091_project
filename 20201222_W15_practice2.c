@@ -20,6 +20,7 @@ int main()
     {
         char tempStr[64];
         char userAccAndPWD[100][64];
+        memset(userAccAndPWD, '\0', 6400); //要先把變數的記憶體全部清空才不會出現亂碼
         int i = 0;
         while (fgets(tempStr, 64, file1) != NULL)
         {
