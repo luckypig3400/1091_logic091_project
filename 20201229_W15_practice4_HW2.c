@@ -16,6 +16,14 @@ int main()
     }
     else
     {
+        int totalLinesInFileCount = 0;
+        char fileLinesCache[512];
+        while (fgets(fileLinesCache, 512, file1) != NULL)
+        {
+            totalLinesInFileCount += 1;
+            printf("第%d行:%s", totalLinesInFileCount, fileLinesCache);
+        }
+
         return 0;
     }
 }
