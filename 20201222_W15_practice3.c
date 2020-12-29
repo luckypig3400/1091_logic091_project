@@ -10,15 +10,18 @@
 #include <stdlib.h>
 #include <string.h>
 
-FILE *file1;
-char fileName[60] = ".\\bin\\user.dat";
+FILE *inputFile;
+FILE *outputFile;
+char inputFileName[60] = ".\\bin\\user.dat";
+char outputFileName[60] = ".\\bin\\HN001.txt";
+char welcomeFile[256] = "親愛的用戶，您好：\n\n\t歡迎使用LowNet進行網路連線，以下為您的帳號與密碼。\n\n\t\t帳號: <ID>\n\t\t密碼: <PASSWORD>\n\n\n\t若有任何問題，歡迎與我們聯絡，電話為321。";
 
 int main()
 {
 
-    file1 = fopen(fileName, "r");
+    inputFile = fopen(inputFileName, "r");
 
-    if (file1 == NULL)
+    if (inputFile == NULL)
     {
         printf("無法開啟檔案 檔案損毀或不存在 將離開系統...");
         return -1;
@@ -32,7 +35,7 @@ int main()
         memset(userAccount, '\0', 3232); //要先把變數的記憶體全部清空才不會出現亂碼
         memset(userPWD, '\0', 3232);
         int i = 0;
-        while (fgets(tempStr, 64, file1) != NULL)
+        while (fgets(tempStr, 64, inputFile) != NULL)
         {
             for (int j = 0; j < 64; j++)
             {
