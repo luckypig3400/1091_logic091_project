@@ -110,7 +110,7 @@ int main()
         for (int i = 0; i < 100; i++)
         {
             // TODO:將已經更改好的文字分別寫入到100個檔案中
-            char outputFileName[60] = ".\\bin\\HN";
+            char outputFileName[60] = ".\\bin\\W15HWoutput\\HN";
             char fileNum[4];
             fileNum[0] = ((i + 1) / 100) + '0';
             fileNum[1] = ((i + 1) / 10) % 10 + '0';
@@ -119,9 +119,14 @@ int main()
             strcat(outputFileName, fileNum);
             strcat(outputFileName, ".txt");
             printf("檔名:%s\n", outputFileName);
+
             char *contentToWriteInFiles = str_replace(welcomeFileContent, "<ID>", userAccount[i]);
             contentToWriteInFiles = str_replace(contentToWriteInFiles, "<PASSWORD>", userPWD[i]);
             printf("HN%03d的文件內容:\n%s\n", i + 1, contentToWriteInFiles);
+
+            outputFile = fopen(outputFileName, "w+");
+            fputs(contentToWriteInFiles, outputFile);
+            fclose(outputFile);
         }
 
         return 0;
