@@ -28,8 +28,13 @@ int main()
             // printf("第%d行:%s", totalLinesInFileCount, fileLinesCache);
             if (strstr(fileLinesCache, searchString) != NULL)
             {
-                printf("於第%d行找到字串%s，該行完整句子為:\n%s\n", totalLinesInFileCount, searchString, fileLinesCache);
+                printf("於第%d行找到字串%s，該行完整句子為:\n%s", totalLinesInFileCount, searchString, fileLinesCache);
                 foundSearchStringCount += 1;
+            }
+            if (foundSearchStringCount >= 3)
+            {
+                printf("已達最大搜尋數量3行，請付費解鎖無限行搜尋");
+                break;
             }
         }
 
