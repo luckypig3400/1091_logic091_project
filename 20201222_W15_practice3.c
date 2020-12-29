@@ -14,7 +14,7 @@ FILE *inputFile;
 FILE *outputFile;
 char inputFileName[60] = ".\\bin\\user.dat";
 char outputFileName[60] = ".\\bin\\HN001.txt";
-char welcomeFile[256] = "親愛的用戶，您好：\n\n\t歡迎使用LowNet進行網路連線，以下為您的帳號與密碼。\n\n\t\t帳號: <ID>\n\t\t密碼: <PASSWORD>\n\n\n\t若有任何問題，歡迎與我們聯絡，電話為321。";
+char welcomeFileContent[256] = "親愛的用戶，您好：\n\n\t歡迎使用LowNet進行網路連線，以下為您的帳號與密碼。\n\n\t\t帳號: <ID>\n\t\t密碼: <PASSWORD>\n\n\n\t若有任何問題，歡迎與我們聯絡，電話為321。";
 
 int main()
 {
@@ -57,21 +57,18 @@ int main()
 
         printf("成功讀取檔案\n");
 
-        char searchAccStr[64];
-        char searchPWDstr[64];
-        memset(searchAccStr, '\0', 64);
-        memset(searchPWDstr, '\0', 64);
-        printf("請輸入使用者帳號:");
-        scanf("%s", &searchAccStr);
-        printf("請輸入密碼:");
-        scanf("%s", &searchPWDstr);
-        int foundAccount = 0;
+        char searchAccStr[64] = "<ID>";
+        char searchPWDstr[64] = "<PASSWORD>";
+        printf("%s,%s\n", searchAccStr, searchPWDstr);
+        printf("%s", welcomeFileContent);
+
+        // TODO:generate 100 files and write ID、password
         for (int i = 0; i < 101; i++)
         {
             if (strcmp(userAccount[i], searchAccStr) == 0)
             {
                 printf("找到帳號!\n");
-                foundAccount = 1;
+
                 if (strcmp(userPWD[i], searchPWDstr) == 0)
                 {
                     printf("密碼正確!歡迎%s成功登入\n", userAccount[i]);
@@ -83,9 +80,6 @@ int main()
                 break;
             }
         }
-
-        if (foundAccount == 0)
-            printf("查無此帳號，請查明後再播");
 
         return 0;
     }
