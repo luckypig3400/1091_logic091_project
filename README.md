@@ -47,3 +47,17 @@ int main()
 }
 
 ```
+
+## Difference between char and char* in c
+
++ https://cs50.stackexchange.com/questions/8899/difference-between-char-and-char-in-c
+
+## Check substring exists in a string in C
+
++ https://stackoverflow.com/questions/12784766/check-substring-exists-in-a-string-in-c
+
+```c=
+if(strstr(sentence, word) != NULL) {
+    /* ... */
+}
+```
