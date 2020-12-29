@@ -16,6 +16,57 @@ char inputFileName[60] = ".\\bin\\user.dat";
 char outputFileName[60] = ".\\bin\\HN001.txt";
 char welcomeFileContent[256] = "親愛的用戶，您好：\n\n\t歡迎使用LowNet進行網路連線，以下為您的帳號與密碼。\n\n\t\t帳號: <ID>\n\t\t密碼: <PASSWORD>\n\n\n\t若有任何問題，歡迎與我們聯絡，電話為321。";
 
+char *str_replace(char *source, char *find, char *rep)
+{
+    // 搜尋文字的長度
+    int find_L = strlen(find);
+    // 替換文字的長度
+    int rep_L = strlen(rep);
+    // 結果文字的長度
+    int length = strlen(source) + 1;
+    // 定位偏移量
+    int gap = 0;
+
+    // 建立結果文字，並複製文字
+    char *result = (char *)malloc(sizeof(char) * length);
+    strcpy(result, source);
+
+    // 尚未被取代的字串
+    char *former = source;
+    // 搜尋文字出現的起始位址指標
+    char *location = strstr(former, find);
+
+    // 漸進搜尋欲替換的文字
+    while (location != NULL)
+    {
+        // 增加定位偏移量
+        gap += (location - former);
+        // 將結束符號定在搜尋到的位址上
+        result[gap] = '\0';
+
+        // 計算新的長度
+        length += (rep_L - find_L);
+        // 變更記憶體空間
+        result = (char *)realloc(result, length * sizeof(char));
+        // 替換的文字串接在結果後面
+        strcat(result, rep);
+        // 更新定位偏移量
+        gap += rep_L;
+
+        // 更新尚未被取代的字串的位址
+        former = location + find_L;
+        // 將尚未被取代的文字串接在結果後面
+        strcat(result, former);
+
+        // 搜尋文字出現的起始位址指標
+        location = strstr(former, find);
+    }
+
+    return result;
+}
+
+char *str_replace(char *, char *, char *);
+
 int main()
 {
 
