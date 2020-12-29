@@ -38,6 +38,13 @@ int main()
             }
         }
 
+        if (foundSearchStringCount == 0)
+            printf("QQ 找不到資料!");
+
         return 0;
     }
 }
+
+// 設計一簡易之搜尋引擎, 判斷關鍵字是否有在檔案(search.dat)中出現
+// 若有, 則顯示出該行內容，最多顯示3列字串
+// 若無, 則顯示「找不到資料!!」
