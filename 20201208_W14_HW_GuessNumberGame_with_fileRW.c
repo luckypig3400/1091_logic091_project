@@ -14,7 +14,7 @@ char topPlayerGuessCount[6] = "66";
 
 int bestRecord = 66;
 char fileContext[256] = "";
-char filename[60] = "20201208_W14_HW_GuessNumberGame_with_fileRW.txt";
+char filename[60] = ".\\bin\\20201208_W14_HW_GuessNumberGame_with_fileRW.txt";
 char tempstr[32];
 
 void writeFile()

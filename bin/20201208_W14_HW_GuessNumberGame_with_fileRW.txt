@@ -1,2 +1,2 @@
-topPlayerGuessCount=06
+topPlayerGuessCount=30
 topPlayerName=OwO

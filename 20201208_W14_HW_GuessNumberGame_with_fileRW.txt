@@ -1,2 +1,0 @@
-topPlayerGuessCount=05
-topPlayerName=user666
