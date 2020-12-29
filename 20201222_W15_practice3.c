@@ -108,28 +108,13 @@ int main()
 
         printf("成功讀取檔案\n");
 
-        char searchAccStr[64] = "<ID>";
-        char searchPWDstr[64] = "<PASSWORD>";
-        printf("%s,%s\n", searchAccStr, searchPWDstr);
-        printf("%s", welcomeFileContent);
+        char* contentToWriteInFiles = str_replace(welcomeFileContent, "<ID>", userAccount[0]);
+        contentToWriteInFiles = str_replace(contentToWriteInFiles, "<PASSWORD>", userPWD[0]);
+        printf("%s\n", contentToWriteInFiles);
 
-        // TODO:generate 100 files and write ID、password
         for (int i = 0; i < 101; i++)
         {
-            if (strcmp(userAccount[i], searchAccStr) == 0)
-            {
-                printf("找到帳號!\n");
-
-                if (strcmp(userPWD[i], searchPWDstr) == 0)
-                {
-                    printf("密碼正確!歡迎%s成功登入\n", userAccount[i]);
-                }
-                else
-                {
-                    printf("密碼輸入錯誤>=<\n");
-                }
-                break;
-            }
+            // TODO:generate 100 files and write ID、password
         }
 
         return 0;
