@@ -16,12 +16,21 @@ int main()
     }
     else
     {
-        int totalLinesInFileCount = 0;
+        char searchString[60];
+        memset(searchString, '\0', 60);
+        printf("請輸入要在文件中搜尋的字串:");
+        scanf("%s", &searchString);
+        int totalLinesInFileCount = 0, foundSearchStringCount = 0;
         char fileLinesCache[512];
         while (fgets(fileLinesCache, 512, file1) != NULL)
         {
             totalLinesInFileCount += 1;
-            printf("第%d行:%s", totalLinesInFileCount, fileLinesCache);
+            // printf("第%d行:%s", totalLinesInFileCount, fileLinesCache);
+            if (strstr(fileLinesCache, searchString) != NULL)
+            {
+                printf("於第%d行找到字串%s，該行完整句子為:\n%s\n", totalLinesInFileCount, searchString, fileLinesCache);
+                foundSearchStringCount += 1;
+            }
         }
 
         return 0;
