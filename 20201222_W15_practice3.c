@@ -13,7 +13,6 @@
 FILE *inputFile;
 FILE *outputFile;
 char inputFileName[60] = ".\\bin\\user.dat";
-char outputFileName[60] = ".\\bin\\HN001.txt";
 char welcomeFileContent[256] = "親愛的用戶，您好：\n\n\t歡迎使用LowNet進行網路連線，以下為您的帳號與密碼。\n\n\t\t帳號: <ID>\n\t\t密碼: <PASSWORD>\n\n\n\t若有任何問題，歡迎與我們聯絡，電話為321。";
 
 char *str_replace(char *source, char *find, char *rep)
@@ -111,6 +110,15 @@ int main()
         for (int i = 0; i < 100; i++)
         {
             // TODO:將已經更改好的文字分別寫入到100個檔案中
+            char outputFileName[60] = ".\\bin\\HN";
+            char fileNum[4];
+            fileNum[0] = ((i + 1) / 100) + '0';
+            fileNum[1] = ((i + 1) / 10) + '0';
+            fileNum[2] = ((i + 1) % 10) + '0';
+            fileNum[3] = '\0';
+            strcat(outputFileName, fileNum);
+            strcat(outputFileName, ".txt");
+            printf("檔名:%s\n", outputFileName);
             char *contentToWriteInFiles = str_replace(welcomeFileContent, "<ID>", userAccount[i]);
             contentToWriteInFiles = str_replace(contentToWriteInFiles, "<PASSWORD>", userPWD[i]);
             printf("HN%03d的文件內容:\n%s\n", i + 1, contentToWriteInFiles);
