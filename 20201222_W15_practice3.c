@@ -113,7 +113,7 @@ int main()
             char outputFileName[60] = ".\\bin\\HN";
             char fileNum[4];
             fileNum[0] = ((i + 1) / 100) + '0';
-            fileNum[1] = ((i + 1) / 10) + '0';
+            fileNum[1] = ((i + 1) / 10) % 10 + '0';
             fileNum[2] = ((i + 1) % 10) + '0';
             fileNum[3] = '\0';
             strcat(outputFileName, fileNum);
