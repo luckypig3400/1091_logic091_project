@@ -108,13 +108,12 @@ int main()
 
         printf("成功讀取檔案\n");
 
-        char* contentToWriteInFiles = str_replace(welcomeFileContent, "<ID>", userAccount[0]);
-        contentToWriteInFiles = str_replace(contentToWriteInFiles, "<PASSWORD>", userPWD[0]);
-        printf("%s\n", contentToWriteInFiles);
-
-        for (int i = 0; i < 101; i++)
+        for (int i = 0; i < 100; i++)
         {
-            // TODO:generate 100 files and write ID、password
+            // TODO:將已經更改好的文字分別寫入到100個檔案中
+            char *contentToWriteInFiles = str_replace(welcomeFileContent, "<ID>", userAccount[i]);
+            contentToWriteInFiles = str_replace(contentToWriteInFiles, "<PASSWORD>", userPWD[i]);
+            printf("HN%03d的文件內容:\n%s\n", i + 1, contentToWriteInFiles);
         }
 
         return 0;
